@@ -1,0 +1,10 @@
+/workspaces/volunteer-system-spaghetti-vs-layered/volunteer-management/volunteer-layered/src/main/java/com/example/layered/VolunteerLayeredApplication.java
+/workspaces/volunteer-system-spaghetti-vs-layered/volunteer-management/volunteer-layered/src/main/java/com/example/layered/controller/ActivityController.java
+/workspaces/volunteer-system-spaghetti-vs-layered/volunteer-management/volunteer-layered/src/main/java/com/example/layered/dto/CreateActivityRequest.java
+/workspaces/volunteer-system-spaghetti-vs-layered/volunteer-management/volunteer-layered/src/main/java/com/example/layered/dto/UpdateActivityRequest.java
+/workspaces/volunteer-system-spaghetti-vs-layered/volunteer-management/volunteer-layered/src/main/java/com/example/layered/entity/Activity.java
+/workspaces/volunteer-system-spaghetti-vs-layered/volunteer-management/volunteer-layered/src/main/java/com/example/layered/entity/ActivityStatus.java
+/workspaces/volunteer-system-spaghetti-vs-layered/volunteer-management/volunteer-layered/src/main/java/com/example/layered/exception/ActivityNotFoundException.java
+/workspaces/volunteer-system-spaghetti-vs-layered/volunteer-management/volunteer-layered/src/main/java/com/example/layered/exception/GlobalExceptionHandler.java
+/workspaces/volunteer-system-spaghetti-vs-layered/volunteer-management/volunteer-layered/src/main/java/com/example/layered/repository/ActivityRepository.java
+/workspaces/volunteer-system-spaghetti-vs-layered/volunteer-management/volunteer-layered/src/main/java/com/example/layered/service/ActivityService.java

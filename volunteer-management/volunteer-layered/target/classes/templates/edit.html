@@ -4,124 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar actividad</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: #f5f7fa;
-            color: #2d3748;
-            min-height: 100vh;
-            padding: 30px 20px;
-        }
-
-        .container { max-width: 700px; margin: 0 auto; }
-
-        .back-link {
-            display: inline-block;
-            color: #3182ce;
-            text-decoration: none;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .back-link:hover { text-decoration: underline; }
-
-        h1 { font-size: 26px; color: #1a365d; margin-bottom: 20px; }
-
-        .error {
-            background: #fff5f5;
-            color: #c53030;
-            padding: 12px 16px;
-            border-left: 4px solid #c53030;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .card {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-        }
-
-        .form-group { margin-bottom: 16px; }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            color: #4a5568;
-            margin-bottom: 5px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #cbd5e0;
-            border-radius: 6px;
-            font-size: 14px;
-            font-family: inherit;
-            transition: border-color 0.15s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #3182ce;
-        }
-
-        .form-group textarea { resize: vertical; min-height: 70px; }
-
-        .field-error { color: #c53030; font-size: 12px; margin-top: 4px; }
-
-        .help-text { font-size: 12px; color: #718096; margin-top: 4px; }
-
-        .info-box {
-            background: #ebf8ff;
-            border-left: 3px solid #3182ce;
-            padding: 12px 16px;
-            border-radius: 4px;
-            font-size: 13px;
-            color: #2c5282;
-            margin-bottom: 20px;
-        }
-
-        .button-group { display: flex; gap: 10px; margin-top: 20px; }
-
-        button, .btn {
-            background: #3182ce;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            font-family: inherit;
-        }
-
-        button:hover, .btn:hover { background: #2c5282; }
-
-        .btn-cancel { background: #a0aec0; }
-        .btn-cancel:hover { background: #718096; }
-    </style>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
 
-<div class="container">
+<div class="container container--narrow">
 
     <a href="/" class="back-link">← Volver al listado</a>
 
-    <h1>Editar actividad</h1>
+    <h1 class="page-title">Editar actividad</h1>
 
     <div th:if="${error}" class="error" th:text="${error}"></div>
 
-    <div class="card">
+    <div class="card card--form">
         <div class="info-box">
             Participantes actuales: <strong th:text="${activity.currentParticipants}"></strong>.
             La capacidad no puede ser menor a este número.

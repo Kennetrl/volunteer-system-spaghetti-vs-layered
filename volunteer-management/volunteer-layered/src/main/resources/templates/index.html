@@ -4,187 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Voluntariado</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: #f5f7fa;
-            color: #2d3748;
-            min-height: 100vh;
-            padding: 30px 20px;
-        }
-
-        .container { max-width: 850px; margin: 0 auto; }
-
-        h1 { font-size: 28px; color: #1a365d; margin-bottom: 8px; }
-        .subtitle { color: #718096; margin-bottom: 25px; font-size: 14px; }
-
-        .error {
-            background: #fff5f5;
-            color: #c53030;
-            padding: 12px 16px;
-            border-left: 4px solid #c53030;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .card {
-            background: white;
-            border-radius: 10px;
-            padding: 22px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-        }
-
-        .card h2 {
-            font-size: 18px;
-            color: #2d3748;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #edf2f7;
-        }
-
-        .form-group { margin-bottom: 14px; }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            color: #4a5568;
-            margin-bottom: 5px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #cbd5e0;
-            border-radius: 6px;
-            font-size: 14px;
-            font-family: inherit;
-            transition: border-color 0.15s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #3182ce;
-        }
-
-        .form-group textarea { resize: vertical; min-height: 60px; }
-
-        .field-error { color: #c53030; font-size: 12px; margin-top: 4px; }
-
-        button, .btn {
-            background: #3182ce;
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.15s;
-            text-decoration: none;
-            display: inline-block;
-            font-family: inherit;
-        }
-
-        button:hover, .btn:hover { background: #2c5282; }
-
-        .btn-add { background: #38a169; }
-        .btn-add:hover { background: #2f855a; }
-        .btn-remove { background: #ed8936; }
-        .btn-remove:hover { background: #c05621; }
-        .btn-edit { background: #d69e2e; }
-        .btn-edit:hover { background: #b7791f; }
-        .btn-delete { background: #c53030; }
-        .btn-delete:hover { background: #9b2c2c; }
-
-        .activity {
-            background: white;
-            border-radius: 10px;
-            padding: 18px 20px;
-            margin-bottom: 14px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            border-left: 5px solid #cbd5e0;
-            transition: transform 0.15s;
-        }
-
-        .activity:hover { transform: translateX(2px); }
-        .activity.open { border-left-color: #38a169; }
-        .activity.closed { border-left-color: #a0aec0; opacity: 0.75; }
-
-        .activity-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 8px;
-            gap: 12px;
-        }
-
-        .activity-name { font-size: 17px; font-weight: 600; color: #2d3748; }
-
-        .badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-
-        .badge.open { background: #c6f6d5; color: #22543d; }
-        .badge.closed { background: #e2e8f0; color: #4a5568; }
-
-        .activity-description {
-            color: #4a5568;
-            font-size: 14px;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-
-        .capacity { font-size: 13px; color: #4a5568; }
-        .capacity strong { color: #2d3748; font-size: 15px; }
-
-        .capacity-bar {
-            width: 100%;
-            height: 6px;
-            background: #edf2f7;
-            border-radius: 3px;
-            margin-top: 8px;
-            overflow: hidden;
-        }
-
-        .capacity-bar-fill {
-            height: 100%;
-            background: linear-gradient(to right, #38a169, #3182ce);
-            transition: width 0.3s;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: #a0aec0;
-            font-style: italic;
-        }
-
-        .actions {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 12px;
-            align-items: center;
-        }
-
-        .actions form { margin: 0; }
-
-        .closed-message { font-size: 13px; color: #718096; }
-    </style>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
 
@@ -225,12 +45,14 @@
         </div>
 
         <div th:each="activity : ${activities}"
-             th:class="'activity ' + (${activity.status.name()} == 'OPEN' ? 'open' : 'closed')">
+             th:classappend="${activity.status.name() == 'OPEN'} ? 'open' : 'closed'"
+             class="activity">
 
             <div class="activity-header">
                 <div class="activity-name" th:text="${activity.name}"></div>
-                <span th:class="'badge ' + (${activity.status.name()} == 'OPEN' ? 'open' : 'closed')"
-                      th:text="${activity.status.name()} == 'OPEN' ? 'ABIERTA' : 'CERRADA'"></span>
+                <span class="badge"
+                      th:classappend="${activity.status.name() == 'OPEN'} ? 'open' : 'closed'"
+                      th:text="${activity.status.name() == 'OPEN'} ? 'ABIERTA' : 'CERRADA'"></span>
             </div>
 
             <p class="activity-description"
@@ -248,12 +70,12 @@
             </div>
 
             <div class="actions">
-                <form th:if="${activity.status.name()} == 'OPEN'"
+                <form th:if="${activity.status.name() == 'OPEN'}"
                       th:action="@{'/activities/' + ${activity.id} + '/add-participant'}" method="post">
                     <button type="submit" class="btn-add">Añadir participante</button>
                 </form>
 
-                <form th:if="${activity.currentParticipants} > 0"
+                <form th:if="${activity.currentParticipants > 0}"
                       th:action="@{'/activities/' + ${activity.id} + '/remove-participant'}" method="post">
                     <button type="submit" class="btn-remove">Quitar participante</button>
                 </form>
@@ -265,7 +87,7 @@
                     <button type="submit" class="btn-delete">Eliminar</button>
                 </form>
 
-                <span th:if="${activity.status.name()} == 'CLOSED'" class="closed-message">
+                <span th:if="${activity.status.name() == 'CLOSED'}" class="closed-message">
                     Esta actividad ya no acepta más participantes
                 </span>
             </div>
